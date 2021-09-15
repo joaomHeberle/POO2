@@ -4,8 +4,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
+
+
 import java.nio.charset.Charset;
 import java.nio.file.StandardOpenOption;
 public class Ideia {
@@ -18,6 +20,7 @@ public class Ideia {
     
     public Ideia(String titulo, String descricao, int urgencia) {
         Path pasta = Paths.get("aula1", "dados");
+        this.encode = Charset.forName("UTF-8");
         this.titulo = titulo;
         this.descricao = descricao;
         this.urgencia = urgencia;
@@ -66,5 +69,26 @@ public class Ideia {
    public void inserir() throws IOException {
        String aux = this.titulo+";"+this.descricao+";"+this.urgencia+"\n";
        Files.writeString(this.arquivo, aux, StandardOpenOption.APPEND);
+   }
+
+   public List<Ideia> lista() throws IOException{
+    List<String> dados;
+    List<Ideia> idei = new ArrayList<>();
+    try {
+        dados = Files.readAllLines(this.arquivo,this.encode);
+        
+    } catch (Exception e) {
+        System.out.println(e);
+        throw new RuntimeException("erro: problemas ao abrir o arquivo:");
+    }
+     for (String linha : dados) {
+         String[] campos = linha.split(";");
+         Ideia i = new Ideia(this.titulo, this.descricao, this.urgencia);
+     
+         idei.add(i);
+     }
+    
+    
+    return idei;
    }
 }

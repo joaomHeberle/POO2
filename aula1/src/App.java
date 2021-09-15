@@ -32,5 +32,7 @@ public class App {
         test.add(i3);
         i1.gravar(test);
         i2.inserir();
+        System.out.println(i1.lista());
+        
     }
 }
