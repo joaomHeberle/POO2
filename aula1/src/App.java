@@ -1,9 +1,15 @@
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
+
+ 
     public static void main(String[] args) throws Exception {
+        List<Ideia> test;
+        test = new ArrayList<>();
         System.out.println("Hello, World!");
         Path dir1= Paths.get("aula1");
         
@@ -16,5 +22,15 @@ public class App {
         if(! Files.exists(arquivo)){
             Files.createFile(arquivo);
         }
+        
+
+        Ideia i1 = new Ideia("mundo", "acabou", 2);
+        Ideia i2 = new Ideia("noia", "crack", 2);
+        Ideia i3 = new Ideia("bako", "gan", 2);
+        test.add(i1);
+        test.add(i2);
+        test.add(i3);
+        i1.gravar(test);
+        i2.inserir();
     }
 }
