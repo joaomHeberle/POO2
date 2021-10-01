@@ -39,22 +39,7 @@ public class Ideia {
         return this.urgencia;
     }
 
-// - gravar(List<ideia>): o método recebe uma lista de ideias e grava no arquivo
-// “ideias.csv”, cada ideia será representa por uma linha com os seus campos
-// separados
-// por “;” (considere que os campos textuais de Ideia não possuem esse
-// caractere) no
-// seguinte formato: titulo;descricao;urgencia. Considere que a gravação do
-// arquivo vai
-// ignorar dados que existam anteriormente no arquivo.
-// - inserir(): o método adiciona ao final do arquivo uma linha com os dados da
-// Ideia.
-// - listar(): método que lê os dados do arquivo e para cada linha cria um
-// objeto de Ideia
-// com os seus campos (atributos) preenchidos e o adiciona a um List de contatos
-// que será
-// retornado pelo método.
-  
+
 
     public void gravar(List<Ideia> ide) throws IOException {
    
@@ -81,12 +66,15 @@ public class Ideia {
         System.out.println(e);
         throw new RuntimeException("erro: problemas ao abrir o arquivo:");
     }
-     for (String linha : dados) {
-         String[] campos = linha.split(";");
-         Ideia i = new Ideia(this.titulo, this.descricao, this.urgencia);
+    for (String linha : dados) {
+        String[] campos = linha.split(";");
+   
+        Ideia i = new Ideia(campos[0],campos[1],Integer.parseInt(campos[2]));
+        idei.add(i);
+    }
+
+    
      
-         idei.add(i);
-     }
     
     
     return idei;

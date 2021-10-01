@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         List<Ideia> test;
         test = new ArrayList<>();
-        System.out.println("Hello, World!");
+ 
         Path dir1= Paths.get("aula1");
         
         Path dirNovo = dir1.resolve("dados");
@@ -32,7 +32,12 @@ public class App {
         test.add(i3);
         i1.gravar(test);
         i2.inserir();
-        System.out.println(i1.lista());
-        
+        List<Ideia> testa;
+        testa = new ArrayList<>();
+
+testa=i2.lista();
+        System.out.println( testa);
+
+     
     }
 }
