@@ -1,40 +1,66 @@
+import java.nio.file.Files;
+import java.util.List;
 
 public class Jogador {
-    private int idPersonagem;
+    private int idJogador;
     private final String nome;
     private int nivel;
     private int qtdMoedas;
     private int expNovoNivel;
-    private static int contId;
- 
 
+    public int verMaiorID() {
+        int i = 0, aux = 0;
 
-    public Jogador(int idPersonagem, String nome, int nivel,  int qtdMoedas,int expNovoNivel) {
+        List<String> dados;
+        Persistencia p = new Persistencia();
+
+        try {
+            dados = Files.readAllLines(p.getArquivo(), p.getEncode());
+
+        } catch (Exception e) {
+            System.out.println(e);
+            throw new RuntimeException("erro: problemas ao abrir o arquivo:");
+        }
+        for (String linha : dados) {
+            String[] campos = linha.split(";");
+
+            i = Integer.parseInt(campos[0]);
+            if (i < aux) {
+                i = aux;
+
+            }
+
+        }
+
+        return i;
+    }
+
+    public Jogador(int idJogador, String nome, int nivel, int qtdMoedas, int expNovoNivel) {
 
         this.expNovoNivel = expNovoNivel;
         this.nivel = nivel;
         this.nome = nome;
         this.qtdMoedas = qtdMoedas;
-        this.idPersonagem = idPersonagem;
-        
-        contId++;
-    }   
- public Jogador(String nome) {
-     this.nome=nome;
-     this.nivel=0;
-     this.qtdMoedas=0;
-     this.idPersonagem=contId;
-     this.expNovoNivel=0;
+        this.idJogador = idJogador;
 
-        contId++;
- }
+    }
+
+    public Jogador(String nome) {
+
+        this.nome = nome;
+        this.nivel = 0;
+        this.qtdMoedas = 0;
+        this.idJogador = verMaiorID() + 1;
+        this.expNovoNivel = 0;
+
+    }
 
     public int getExpNovoNivel() {
         return this.expNovoNivel;
     }
 
-    public int getIdPersonagem() {
-        return this.idPersonagem;
+    public int getIdJogador() {
+        return this.idJogador;
     }
 
     public int getNivel() {
@@ -51,8 +77,8 @@ public class Jogador {
 
     @Override
     public String toString() {
-        return " Experiencia:" + getExpNovoNivel() + ", nivel:" + getNivel()  + ", nome:" + getNome()
-                 + ", Moedas:" + getQtdMoedas() + ";";
+        return "ID=: " + getIdJogador() + " Experiencia:" + getExpNovoNivel() + ", nivel:" + getNivel() + ", nome:"
+                + getNome() + ", Moedas:" + getQtdMoedas() + ";";
     }
 
     @Override
@@ -63,8 +89,7 @@ public class Jogador {
             return false;
         }
         Jogador jogador = (Jogador) o;
-        return jogador.idPersonagem == jogador.idPersonagem;
+        return this.idJogador == jogador.idJogador;
     }
 
-   
 }

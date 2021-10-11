@@ -1,5 +1,6 @@
 import java.nio.file.StandardOpenOption;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -16,7 +17,15 @@ public class Persistencia {
         this.encode = Charset.forName("UTF-8");
         this.arquivo = pasta.resolve("jogador.csv");
     }
-    
+
+    public Path getArquivo() {
+        return this.arquivo;
+    }
+
+    public Charset getEncode() {
+        return this.encode;
+    }
+
     public void criaPasta() throws IOException {
         Path dir1 = Paths.get("banco");
 
@@ -35,27 +44,83 @@ public class Persistencia {
     }
 
     public void inserir(Jogador i) throws IOException {
+
         Path dir1 = Paths.get("banco");
         Path arquivo = dir1.resolve("jogador.csv");
-        String aux = i.getIdPersonagem() + ";" + i.getNome() + ";" + i.getNivel() + ";" 
-        + i.getQtdMoedas() + ";" + i.getExpNovoNivel() + "\n";
+        String aux = (i.verMaiorID() + 1) + ";" + i.getNome() + ";" + i.getNivel() + ";" + i.getQtdMoedas() + ";"
+                + i.getExpNovoNivel() + "\n";
         Files.writeString(arquivo, aux, StandardOpenOption.APPEND);
 
     }
-    // ◦ get(id): que recebe um id (inteiro) e retorna um objeto da classe de modelo (considere a
-    // criação de um campo id que é único e como seria possível gerenciar isso);
-    // ◦ update(obj): que altera a linha do objeto de id passado por parâmetro para os novos valores
-    // armazenados em obj;
-    // ◦ delete(id): que deleta do arquivo a linha do id passado por parâmetro;
-    public Jogador getId(int id){
-        return null;
+
+    public static Jogador fromLine(String[] campos) {
+
+        return new Jogador(Integer.parseInt(campos[0]), campos[1], Integer.parseInt(campos[2]),
+                Integer.parseInt(campos[3]), Integer.parseInt(campos[4]));
+
     }
-    public Jogador update(int id){
-        return null;
+
+    public List<Jogador> getId(int id) throws IOException {
+        Path arq = Paths.get("banco", "jogador.csv");
+
+        List<Jogador> lista = Files.lines(arq).map(l -> fromLine(l.split(";"))).filter(j -> j.getIdJogador() == id)
+                .collect(Collectors.toList());
+
+        return lista;
     }
-    public Jogador delete(int id){
-        return null;
+
+    public void update(Jogador up) throws IOException {
+ 
+   
+       Path arq = Paths.get("banco", "jogador.csv");
+
+       List<Jogador> lista = Files.lines(arq)
+       .map(l -> fromLine(l.split(";")))
+        .collect(Collectors.toList());
+
+        String aux = "";
+
+        for (int tam = 0; tam < lista.size(); tam++) {
+            if(up.getIdJogador()==lista.get(tam).getIdJogador()){
+                aux += up.getIdJogador() + ";" + up.getNome() + ";" + up.getNivel() + ";"
+                + up.getQtdMoedas()+ ";" + up.getExpNovoNivel() + "\n";
+            } else{
+                aux += lista.get(tam).getIdJogador() + ";" + lista.get(tam).getNome() + ";" + lista.get(tam).getNivel() + ";"
+                + lista.get(tam).getQtdMoedas() + ";" + lista.get(tam).getExpNovoNivel() + "\n";
+            }
+            
+        }
+
+        Files.writeString(arquivo, aux);
+   
     }
+
+    public void delete(int id) throws IOException {
+
+        Path arq = Paths.get("banco", "jogador.csv");
+
+        List<Jogador> lista = Files.lines(arq).map(l -> fromLine(l.split(";"))).filter(j -> j.getIdJogador() != id)
+                .collect(Collectors.toList());
+        System.out.println("==============apagado ==================");
+        lista.stream().forEach(System.out::println);
+        inserirApagando(lista);
+
+    }
+
+    private void inserirApagando(List<Jogador> i) throws IOException {
+
+        String aux = "";
+
+        for (int tam = 0; tam < i.size(); tam++) {
+            aux += i.get(tam).getIdJogador() + ";" + i.get(tam).getNome() + ";" + i.get(tam).getNivel() + ";"
+                    + i.get(tam).getQtdMoedas() + ";" + i.get(tam).getExpNovoNivel() + "\n";
+        }
+
+        Files.writeString(arquivo, aux);
+
+    }
+
+
     public List<Jogador> lista() throws IOException {
         List<String> dados;
         List<Jogador> play = new ArrayList<Jogador>();
@@ -73,7 +138,6 @@ public class Persistencia {
                     Integer.parseInt(campos[3]), Integer.parseInt(campos[4]));
             play.add(i);
 
-      
         }
         return play;
     }
