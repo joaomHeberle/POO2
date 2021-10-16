@@ -77,19 +77,8 @@ public class Jogador {
 
     @Override
     public String toString() {
-        return "ID=: " + getIdJogador() + " Experiencia:" + getExpNovoNivel() + ", nivel:" + getNivel() + ", nome:"
-                + getNome() + ", Moedas:" + getQtdMoedas() + ";";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Jogador)) {
-            return false;
-        }
-        Jogador jogador = (Jogador) o;
-        return this.idJogador == jogador.idJogador;
+        return "ID=: " + getIdJogador() + " Experiencia:" + getExpNovoNivel() + " nivel:" + getNivel() + " nome:"
+                + getNome() + " Moedas:" + getQtdMoedas() + "\n";
     }
 
 }

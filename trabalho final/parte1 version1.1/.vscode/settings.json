@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "comeco\\parte1\\lib\\Jplay\\dist\\Jplay.jar"
+    ]
+}

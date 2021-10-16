@@ -101,7 +101,7 @@ public class Persistencia {
 
         List<Jogador> lista = Files.lines(arq).map(l -> fromLine(l.split(";"))).filter(j -> j.getIdJogador() != id)
                 .collect(Collectors.toList());
-        System.out.println("==============apagado ==================");
+       
         lista.stream().forEach(System.out::println);
         inserirApagando(lista);
 
