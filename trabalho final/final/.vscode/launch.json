@@ -1,0 +1,50 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch TorreAtack",
+            "request": "launch",
+            "mainClass": "Jogo.TorreAtack",
+            "projectName": "final_2e9b9ada"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "parte1_81db62f0"
+        },
+        {
+            "type": "java",
+            "name": "Launch TesteJogador",
+            "request": "launch",
+            "mainClass": "TesteJogador",
+            "projectName": "parte1_81db62f0"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestePersistencia",
+            "request": "launch",
+            "mainClass": "TestePersistencia",
+            "projectName": "parte1_81db62f0"
+        },
+        {
+            "type": "java",
+            "name": "Launch TorreAtack",
+            "request": "launch",
+            "mainClass": "TorreAtack",
+            "projectName": "parte1_81db62f0",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-17.0.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+        }
+    ]
+}
