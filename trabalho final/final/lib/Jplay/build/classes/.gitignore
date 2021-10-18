@@ -1,8 +1,10 @@
 /recursos/
+/Jogo/
+/jplay/
 /App.class
 /Jogador.class
-/Jogo/
 /Persistencia.class
 /TesteJogador.class
 /TestePersistencia.class
-/jplay/
+/main/
+/Modelo/

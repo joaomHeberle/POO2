@@ -9,8 +9,10 @@ public class Som {
 	public static void play(String audio) {
 		stop();
 		musica = new Sound(audio);
+	
 		Som.musica.play();
 		Som.musica.setRepeat(true);
+		Som.musica.setVolume(-20);
 	}
 	
 	public static void stop() {
@@ -18,6 +20,11 @@ public class Som {
 			musica.stop();
 		}
 		
+	}
+	
+	public void somDisparo() {
+
+	new Sound("src/recursos/audio/laser.wav").play();
 	}
 
 }

@@ -7,13 +7,16 @@ import jplay.Sound;
 
 public class ControleTiro {
 	
+	
+	
 	LinkedList<Tiro> tiros = new LinkedList<>();
 	
 	public void adicionaTiro(double x,double y,int caminho,Scene cena) {
 		Tiro tiro = new Tiro(x,y,caminho);
 		tiros.addFirst(tiro);
 		cena.addOverlay(tiro);
-		//somDisparo();
+		Som s = new Som();
+		s.somDisparo();
 
 	}
 	public void run(Ator inimigo) {
@@ -31,8 +34,7 @@ public class ControleTiro {
 		
 
 	}
-	private void somDisparo() {
-		new Sound("");
-	}
+	
+
 
 }

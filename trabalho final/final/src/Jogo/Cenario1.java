@@ -10,40 +10,54 @@ public class Cenario1 {
 	private Scene cena;
 	private Player player;
 	private Keyboard teclado;
-	private Zumbie zum;
+	private Zumbie zum[];
 
 	public Cenario1(Window window) {
 		janela = window;
 		cena = new Scene();
 		cena.loadFromFile("src/recursos/scn/cenario1.scn");
-		player = new Player(600, 0);
+		player = new Player(750,550);
 		teclado = janela.getKeyboard();
-		zum=new Zumbie(600, 100);
+		zum=new Zumbie[10];
 		
 		Som.play("src/recursos/audio/Path.mid");
 		run();
 	}
 
 	private void run() {
+		
+		for (int i = 0; i < zum.length; i++) {
+			zum[i] = new Zumbie((0+i)*i,0);
+		}
+		
+		
 		while (true) {
 			//cena.draw();
 			player.controle(janela,teclado);
 			player.caminho(cena);
 			
-			zum.caminho(cena);
-			//zum.perseguir(player.x, player.y);
+			
 			cena.moveScene(player);
 			player.x+=cena.getXOffset();
 			player.y+=cena.getYOffset();
 			
+			for (int i = 0; i < zum.length; i++) {
+				
+	
 			
+			zum[i].x+=cena.getXOffset();
+			zum[i].y+=cena.getYOffset();
+			zum[i].caminho(cena);
+			zum[i].perseguir(player.x, player.y);
+			zum[i].draw();
+			player.atirar(janela, cena, teclado,zum[i]);
+			zum[i].morrer();
+			zum[i].atacar(player);
 			
-			zum.x+=cena.getXOffset();
-			zum.y+=cena.getYOffset();
-			 
-			zum.draw();
-			player.atirar(janela, cena, teclado,zum);
-			zum.morrer();
+			}
+			player.energia(janela);
+		
+			
 			player.draw();
 			janela.update();
 
