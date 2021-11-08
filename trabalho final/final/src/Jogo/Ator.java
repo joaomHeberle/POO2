@@ -16,7 +16,7 @@ public class Ator extends Sprite {
 	protected int direcao = 3;
 	protected boolean movendo = false;
 	public double energia=1000;
-	
+	public boolean tocou=false;
 	public Ator(String fileName, int numFrames) {
 		super(fileName, numFrames);
 		
@@ -37,6 +37,7 @@ public class Ator extends Sprite {
 			TileInfo tile = (TileInfo) tiles.elementAt(i);
 		
 			if(controle.colisao(this, tile)==true) {
+				tocou=true;
 				if(colisaoVertical(this, tile)) {
 				if(tile.y+tile.height-2 < this.y) {
 					this.y = tile.y+tile.height;

@@ -38,7 +38,8 @@ public class App {
         p.delete(14);
         Jogador i4 = new Jogador(15, "debora", 548, 472, 350);
         p.update(i4);
-      
+      	
+        System.out.println("nivel: "+i4.getNivel());
    
 
     }
