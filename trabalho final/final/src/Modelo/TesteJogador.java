@@ -34,9 +34,12 @@ public class TesteJogador {
 //    	edao.insert(i3);
 //    	edao.delete(1);
     	
-    	var joBd = edao.get(2);
-		System.out.println("teste get: "+joBd);
+//    	var joBd = edao.get(2);
+//		System.out.println("teste nivel: "+joBd.getNivel());
 		
+    	var jogs = edao.list(2, 3);
+		System.out.println("teste list:");
+		jogs.stream().forEach(System.out::println);
     	
 }
 }
