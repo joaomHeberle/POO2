@@ -1,5 +1,6 @@
-package Jogo;
+package jogo;
 
+import jogo.views.Cenario2;
 import jplay.GameImage;
 import jplay.Window;
 import jplay.Keyboard;
@@ -16,7 +17,7 @@ public class TorreAtack {
 			plano.draw();
 			janela.update();
 			if (teclado.keyDown(Keyboard.ENTER_KEY)) {
-				new Cenario1(janela);
+				new Cenario2(janela);
 			}
 		}
 	}
