@@ -31,7 +31,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #8ACFA5;">
                            <children>
-                              <Button fx:id="btnCadAdmin" layoutX="102.0" layoutY="86.0" mnemonicParsing="false" onAction="#handleAdicionaJogadorADM" text="Administrador" />
+                              <Button fx:id="btnCadAdmin" layoutX="102.0" layoutY="86.0" mnemonicParsing="false" onAction="#handleAdicionaMissao" text="Missão" />
                            </children>
                         </AnchorPane>
                     </items>

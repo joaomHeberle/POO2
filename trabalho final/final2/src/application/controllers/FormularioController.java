@@ -1,146 +1,173 @@
 package application.controllers;
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
-import jogo.TorreAtack;
+
 import application.Main;
 import application.models.Jogador;
 import dao.JogadorDAO;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import jogo.TorreAtack;
 
 public class FormularioController implements Initializable {
-	
+
 	private ObservableList<Jogador> jogadores;
-    @FXML
-    private TableColumn<Jogador, Integer> clmExperiencia;
- 
-    @FXML
-    private TableColumn<Jogador, Integer> clmId;
-    @FXML
-    private Button btnAlterarJogador;
+	@FXML
+	private TableColumn<Jogador, Integer> clmExperiencia;
 
+	@FXML
+	private TableColumn<Jogador, Integer> clmId;
     @FXML
-    private Button btnJogar;
+    private MenuItem btnAdicionaJogador;
     @FXML
-    private TableColumn<Jogador, Integer> clmMoedas;
+    private MenuItem menuVerMissao;
+    @FXML
+    private MenuItem btnAlterarJogador;
 
-    @FXML
-    private TableColumn<Jogador, Integer> clmNivel;
+	@FXML
+	private TableColumn<Jogador, Integer> clmMoedas;
 
-    @FXML
-    private TableColumn<Jogador, String> clmNome;
+	@FXML
+	private TableColumn<Jogador, Integer> clmNivel;
 
-    @FXML
-    private TableView<Jogador> tabJogador;
+	@FXML
+	private TableColumn<Jogador, String> clmNome;
 
-    @FXML
-    private Button btnAddJogador;
-    
-    @FXML
-    private Button btnExcluiJogador;
-    
-    
-    private void geraLista() {
-    	JogadorDAO jDao = new JogadorDAO();
-    	jogadores = FXCollections.observableArrayList(jDao.list(10,0));
-    	tabJogador.setItems(this.jogadores);
-    }
+	@FXML
+	private TableView<Jogador> tabJogador;
 
+	@FXML
+	private Button btnAddJogador;
 
+	@FXML
+	private Button btnExcluiJogador;
+
+	private void geraLista() {
+		JogadorDAO jDao = new JogadorDAO();
+		jogadores = FXCollections.observableArrayList(jDao.list(10, 0));
+		tabJogador.setItems(this.jogadores);
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+
 		geraLista();
 		clmId.setCellValueFactory(new PropertyValueFactory<>("idJogador"));
 		clmExperiencia.setCellValueFactory(new PropertyValueFactory<>("expNovoNivel"));
 		clmMoedas.setCellValueFactory(new PropertyValueFactory<>("qtdMoedas"));
 		clmNivel.setCellValueFactory(new PropertyValueFactory<>("nivel"));
 		clmNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-	
 
-	
 	}
-    @FXML
-    void handleAdicionaJogador(ActionEvent event) {
-    	Main.loadScene("AddJogador");
-    }
-    
-    @FXML
-    void handleExcluiJogador(ActionEvent event) {
-    	Jogador alvo = this.tabJogador.getSelectionModel().getSelectedItem();
-    	if(alvo!=null) {
-    		var alertDelete = new Alert(AlertType.CONFIRMATION);
-    
-    		alertDelete.setHeaderText("Você tem certeza que deseja Excluir ?");
-    		alertDelete.setContentText("exclusão não tem volta");
-    		alertDelete.setTitle("Atenção");
-    		
-   		 alertDelete.showAndWait().ifPresent(response -> {
-		     if (response == ButtonType.OK) {
-		     	JogadorDAO jDAO = new JogadorDAO();
-		     	jDAO.delete(alvo.getIdJogador());
-		     }
-		 });
-    		
-   	
 
-    	Main.loadScene("Sample");
-    	}else {
-    		var alert= new Alert(AlertType.INFORMATION);
-    		alert.setHeaderText("Jogador não selecionado");
-    		alert.setContentText("selecione para poder excluir");
-    		alert.setTitle("Atenção");
-    		
-    		alert.show();
-    		
-    	}
-    	
-    }
+	@FXML
+	void handleAdicionaJogador(ActionEvent event) {
+		Main.loadScene("AddJogador");
+	}
+
+	@FXML
+	void handleExcluiJogador(ActionEvent event) {
+		Jogador alvo = this.tabJogador.getSelectionModel().getSelectedItem();
+		if (alvo != null) {
+			var alertDelete = new Alert(AlertType.CONFIRMATION);
+
+			alertDelete.setHeaderText("Você tem certeza que deseja Excluir ?");
+			alertDelete.setContentText("exclusão não tem volta");
+			alertDelete.setTitle("Atenção");
+
+			alertDelete.showAndWait().ifPresent(response -> {
+				if (response == ButtonType.OK) {
+					JogadorDAO jDAO = new JogadorDAO();
+					jDAO.delete(alvo.getIdJogador());
+				}
+			});
+
+			Main.loadScene("ListaJogador");
+		} else {
+			var alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("Jogador não selecionado");
+			alert.setContentText("selecione para poder excluir");
+			alert.setTitle("Atenção");
+
+			alert.show();
+
+		}
+
+	}
+
+	@FXML
+	void handleAlteraJogador(ActionEvent event) {
+		Jogador alvo = this.tabJogador.getSelectionModel().getSelectedItem();
+		if (alvo != null) {
+
+			Main.loadScene("AddJogador", alvo);
+
+		} else {
+			var alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("Jogador não selecionado");
+			alert.setContentText("selecione para poder Alterar");
+			alert.setTitle("Atenção");
+
+			alert.show();
+
+		}
+	}
 	 @FXML
-	    void handleAlteraJogador(ActionEvent event) {
+	    void handleJogar(ActionEvent event) {
+		 TorreAtack ta = new TorreAtack();
+		 
+		
 		 Jogador alvo = this.tabJogador.getSelectionModel().getSelectedItem();
-	    	if(alvo!=null) {
-	    
-		     	Main.loadScene("AddJogador",alvo);
-	    		
-	    	}else {
-	    		var alert= new Alert(AlertType.INFORMATION);
-	    		alert.setHeaderText("Jogador não selecionado");
-	    		alert.setContentText("selecione para poder Alterar");
-	    		alert.setTitle("Atenção");
-	    		
-	    		alert.show();
-	    		
-	    	}
+			if (alvo != null) {
+				 Main.fechaTela();
+		 ta.Joga(alvo.getIdJogador());
+			} else {
+				var alert = new Alert(AlertType.INFORMATION);
+				alert.setHeaderText("Jogador não selecionado");
+				alert.setContentText("selecione para poder Jogar");
+				alert.setTitle("Atenção");
+
+				alert.show();
+
+			}
+
+	    }
+	  @FXML
+	    void handleEscolheMissao(ActionEvent event) {
+		  Jogador alvo = this.tabJogador.getSelectionModel().getSelectedItem();
+			if (alvo != null) {
+
+				Main.loadScene("ListaMissao", alvo);
+
+			} else {
+				var alert = new Alert(AlertType.INFORMATION);
+				alert.setHeaderText("Jogador não selecionado");
+				alert.setContentText("selecione para poder Escolher uma missão");
+				alert.setTitle("Atenção");
+
+				alert.show();
+
+			}
+	    }
+	  @FXML
+	    void handleListaMissões(ActionEvent event) {
+		  Main.loadScene("ListaMissao");
 	    }
 	    @FXML
-	    void handleComecaJogo(ActionEvent event) {
-	    	TorreAtack at = new TorreAtack();
-	    	 final Node source = (Node) event.getSource();
-	  	    final Stage stage = (Stage) source.getScene().getWindow();
-	  	    stage.hide();
-	    	at.Joga();
-	   
+	    void handleVerificarMissoes() {
+	    	 Main.loadScene("ListaMissaoJogador");
 	    }
 
 }
-

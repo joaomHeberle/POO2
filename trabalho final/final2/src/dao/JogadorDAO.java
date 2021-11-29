@@ -12,19 +12,24 @@ public class JogadorDAO implements DAO<Jogador> {
 
 	@Override
 	public boolean insert(Jogador e) {
-		String query = "INSERT INTO jogador (nome, nivel, moedas, experiencia) VALUES (?,?,?,?)";
+		String query = "INSERT INTO jogador (nome, nivel, moedas, experiencia) VALUES (?,?,?,?) RETURNING \"id_Jogador\"";
 		try (Connection con = ConnectionFactory.getConnection()) {
 			var pstm = con.prepareStatement(query);
 			pstm.setString(1, e.getNome());
 			pstm.setLong(2, e.getNivel());
 			pstm.setLong(3, e.getQtdMoedas());
 			pstm.setLong(4, e.getExpNovoNivel());
-			pstm.execute();
+			var rs = pstm.executeQuery();
+			var ex = rs.next();
+			e.setIdJogador(rs.getInt("id_Jogador"));
+			rs.close();
+			 pstm.execute();
 			pstm.close();
+		return ex;
 		} catch (SQLException ex) {
 			throw new RuntimeException(ex);
 		}
-		return true;
+
 	}
 
 	public boolean delete(int id) {
@@ -32,12 +37,14 @@ public class JogadorDAO implements DAO<Jogador> {
 		try (Connection con = ConnectionFactory.getConnection()) {
 			var pstm = con.prepareStatement(query);
 			pstm.setInt(1, id);
-			pstm.execute();
+			var ex = pstm.execute();
 			pstm.close();
+			return ex;
 		} catch (SQLException ex) {
+
 			throw new RuntimeException(ex);
 		}
-		return true;
+
 	}
 
 	@Override
@@ -54,6 +61,7 @@ public class JogadorDAO implements DAO<Jogador> {
 			jog.setIdJogador(resposta.getInt("id_Jogador"));
 
 			jog.setExpNovoNivel(resposta.getInt("experiencia"));
+
 			resposta.close();
 			pstm.close();
 			return jog;
@@ -100,13 +108,14 @@ public class JogadorDAO implements DAO<Jogador> {
 			pstm.setLong(3, obj.getQtdMoedas());
 			pstm.setObject(4, obj.getExpNovoNivel());
 			pstm.setInt(5, obj.getIdJogador());
-		
-			pstm.execute();
+			var ex =pstm.execute();
 			pstm.close();
+			return ex;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		return true;
+
 	}
+	
 
 }

@@ -1,5 +1,6 @@
 package application.models;
 
+import java.util.List;
 
 public class Jogador {
 	private int idJogador;
@@ -7,8 +8,8 @@ public class Jogador {
 	private int nivel;
 	private int qtdMoedas;
 	private int expNovoNivel;
-
-
+	private List<Missao> missoes;
+	
 	public Jogador(int idJogador, String nome, int nivel, int qtdMoedas, int expNovoNivel) {
 		super();
 		this.expNovoNivel = expNovoNivel;
@@ -18,6 +19,10 @@ public class Jogador {
 		this.idJogador = idJogador;
 
 	}
+
+	
+
+
 
 	public Jogador(String nome) {
 		super();
@@ -30,7 +35,7 @@ public class Jogador {
 	}
 
 	public Jogador() {
-		super();
+
 		this.nome = "";
 		this.nivel = 0;
 		this.qtdMoedas = 0;
@@ -81,8 +86,17 @@ public class Jogador {
 
 	@Override
 	public String toString() {
-		return "ID: " + getIdJogador() + " nome:" + getNome() + " Experiencia:" + getExpNovoNivel() + " nivel:"
-				+ getNivel() + " Moedas:" + getQtdMoedas() + "\n";
+		
+		return "ID: " + getIdJogador() + " nome: " + getNome() + " Experiencia: " + getExpNovoNivel() + " nivel: "
+				+ getNivel() + " Moedas: " + getQtdMoedas() +" Missões: "+getMissoes()+"\n";
+	}
+
+	public List<Missao> getMissoes() {
+		return missoes;
+	}
+
+	public void setMissoes(List<Missao> missoes) {
+		this.missoes = missoes;
 	}
 
 }

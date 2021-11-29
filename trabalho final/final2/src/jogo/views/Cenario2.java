@@ -22,14 +22,15 @@ public class Cenario2 extends Cenario {
 	private Keyboard teclado;
 	public static int tam = 20;
 	private boolean testa=true;
-
-	public Cenario2(Window window) {
+	private int id;
+	
+	public Cenario2(Window window,int id) {
 		janela = window;
 		cena = new Scene();
 		cena.loadFromFile("src/recursos/scn/cenario2.scn");
 		player = new Player2(600, 500);
 		teclado = janela.getKeyboard();
-		
+		this.id=id;
 
 		//Som.play("src/recursos/audio/Path.mid");
 		run();
@@ -55,7 +56,7 @@ public class Cenario2 extends Cenario {
 	}
 	private void mudarCenario() {
 		if(tileCollision(63, player, cena)==true) {
-			new Cenario1(janela);
+			new Cenario1(janela,id);
 		}
 		
 	}
@@ -63,7 +64,7 @@ public class Cenario2 extends Cenario {
 		if (teclado.keyDown(Keyboard.ENTER_KEY)) {
 		if(tileCollision(66, player, cena)==true) {
 			
-			
+			try {
 			JogadorDAO jdao = new JogadorDAO();
 			 List<Jogador> pers = new ArrayList<>();
 		    JDialog.setDefaultLookAndFeelDecorated(true);
@@ -72,7 +73,7 @@ public class Cenario2 extends Cenario {
 		   
 		    Object selection = JOptionPane.showInputDialog(null, "Escolha uma missão",
 		        "Lista de missões", JOptionPane.QUESTION_MESSAGE, null, selectionValues,null);
-			System.out.println("rodou");
+		
 			System.out.println(selection);
 			var a=selection.toString();
 			System.out.println(a);
@@ -81,7 +82,9 @@ public class Cenario2 extends Cenario {
 			int aux_Id= Integer.parseInt(corte[1]);
 			
 			System.out.println(aux_Id);
-		
+			}catch (NullPointerException e) {
+				System.out.println("deve escolher uma missão");
+			}
 		}
 		}
 		

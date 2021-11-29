@@ -17,9 +17,9 @@ import jplay.Window;
 public class Player extends Ator {
 
 	private double energia = 500;
-	JogadorDAO jdao = new JogadorDAO();
-	private int level = jdao.get(9).getNivel();
-	private int experiencia = jdao.get(9).getExpNovoNivel();
+	
+	private int level; 
+	private int experiencia;
 	public double getEnergia() {
 		return energia;
 	}
@@ -27,15 +27,29 @@ public class Player extends Ator {
 		return level;
 	}
 
-	public Player(int x, int y) {
+	public Player(int x, int y, int id) {
 		super("src/recursos/sprite/nivel1.png", 3);
 
-
+	
 		this.x = x;
 		this.y = y;
 		this.setTotalDuration(2000);
+		this.level = geraNivel(id);
+		this.experiencia = geraExp(id);
+		
 	}
 
+	private int geraNivel(int id) {
+		JogadorDAO jdao = new JogadorDAO();
+		
+		return jdao.get(id).getNivel();
+	}
+	private int geraExp(int id) {
+JogadorDAO jdao = new JogadorDAO();
+		
+		return jdao.get(id).getExpNovoNivel();
+	}
+	
 	ControleTiro tiros = new ControleTiro();
 
 	public void atirar(Window janela, Scene cena, Keyboard teclado, Ator inimigo) {
@@ -152,9 +166,9 @@ public class Player extends Ator {
 	Font f = new Font("arial", Font.BOLD, 30);
 
 	public void energia(Window janela) {
-		janela.drawText("Energia: " + this.energia, 30, 30, Color.GREEN, f);
-		janela.drawText("Nivel: " + this.level, 30, 80, Color.GREEN, f);
-
+		janela.drawText("Energia: " + this.energia, 10, 30, Color.GREEN, f);
+		janela.drawText("Nivel: " + this.level, 10, 80, Color.GREEN, f);
+		janela.drawText("Exp: " + this.experiencia, 10, 130, Color.GREEN, f);
 	}
 
 	public void setEnergia(double energia) {

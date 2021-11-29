@@ -6,7 +6,7 @@ import jplay.Window;
 import jplay.Keyboard;
 
 public class TorreAtack {
-	public void Joga() {
+	public void Joga(int id) {
 
 		Window janela = new Window(800, 600);
 		GameImage plano = new GameImage("src/recursos/cenarios/menu.png");
@@ -17,7 +17,7 @@ public class TorreAtack {
 			plano.draw();
 			janela.update();
 			if (teclado.keyDown(Keyboard.ENTER_KEY)) {
-				new Cenario2(janela);
+				new Cenario2(janela,id);
 			}
 		}
 	}

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ListaMissaoController">
+   <top>
+      <TabPane prefHeight="404.0" prefWidth="600.0" style="-fx-background-color: #DACFC8;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Lista de Missões">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <TableView fx:id="tabMissao" prefHeight="373.0" prefWidth="600.0" style="-fx-background-color: #DACFC8;" BorderPane.alignment="CENTER">
+                          <columns>
+                            <TableColumn fx:id="clmIdMissao" prefWidth="70.0" text="Codigo" />
+                            <TableColumn fx:id="clmDescricao" prefWidth="130.0" text="Descrição" />
+                              <TableColumn fx:id="clmDataIni" prefWidth="107.0" text="Data de Inicio" />
+                              <TableColumn fx:id="clmDataFim" prefWidth="83.0" text="Data de fim" />
+                              <TableColumn fx:id="clmTipo" prefWidth="110.0" text="Tipo" />
+                              <TableColumn fx:id="clmStatus" prefWidth="99.0" text="Status" />
+                              <TableColumn fx:id="clmQuantidade" prefWidth="75.0" text="Quantidade" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </center>
+                     <bottom>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="-fx-background-color: #8ACFA5 #8ACFA5;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleAlterarMissao" text="Alterar" />
+                              <Button mnemonicParsing="false" onAction="#handleDeletarMissao" text="Deletar" />
+                              <Button mnemonicParsing="false" onAction="#handleSelecionaMissao" text="Seleciona Missão" />
+                              <Button mnemonicParsing="false" onAction="#handleVoltaJogadores" text="Lista Jogadores" />
+                           </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                        </HBox>
+                     </bottom>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab text="Cadastrar Missão">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DACFC8;">
+                     <top>
+                        <GridPane alignment="CENTER" prefHeight="213.0" prefWidth="622.0" BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Descrição:" />
+                              <Label text="Data de Inicio:" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="pickerDataIni" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="Data de Fim:" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="pickerDataFim" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="Quantidade:" GridPane.rowIndex="3" />
+                              <Spinner fx:id="btnSpinerQuantidade" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextArea fx:id="txtDescricao" prefHeight="71.0" prefWidth="300.0" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                     </top>
+                     <center>
+                        <ComboBox fx:id="comboTipo" prefWidth="150.0" promptText="Escolha um Tipo" BorderPane.alignment="CENTER" />
+                     </center>
+                     <bottom>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8ACFA5;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleCadastrar" text="Cadastrar" />
+                           </children>
+                        </HBox>
+                     </bottom>
+                  </BorderPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </top>
+</BorderPane>

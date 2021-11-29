@@ -16,15 +16,16 @@ public class Cenario1 extends Cenario{
 	private Keyboard teclado;
 	public static int tam =20;
 	private Zumbie zum[];
-
-	public Cenario1(Window window) {
+	private int id;
+	
+	public Cenario1(Window window,int id) {
 		janela = window;
 		cena = new Scene();
 		cena.loadFromFile("src/recursos/scn/cenario1.scn");
-		player = new Player(400, 500);
+		player = new Player(400, 500, id);
 		teclado = janela.getKeyboard();
 		zum = new Zumbie[tam];
-
+		this.id=id;
 		Som.play("src/recursos/audio/Path.mid");
 		run();
 	}
@@ -89,7 +90,7 @@ public class Cenario1 extends Cenario{
 			
 				
 				player.energia(janela);
-
+				
 				player.draw();
 				janela.update();
 

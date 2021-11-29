@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="409.0" prefWidth="518.0" style="-fx-background-color: #DACFC8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.FormularioController">
+   <center>
+      <TableView fx:id="tabJogador" prefHeight="370.0" prefWidth="518.0" style="-fx-background-color: #DACFC8;" BorderPane.alignment="CENTER">
+         <columns>
+            <TableColumn fx:id="clmId" prefWidth="75.0" text="id" />
+            <TableColumn fx:id="clmNome" prefWidth="141.0" text="Nome" />
+            <TableColumn fx:id="clmNivel" minWidth="9.0" prefWidth="66.0" text="Nivel" />
+            <TableColumn fx:id="clmMoedas" prefWidth="135.0" text="Moedas" />
+            <TableColumn fx:id="clmExperiencia" minWidth="0.0" prefWidth="99.0" text="Experiencia" />
+         </columns>
+      </TableView>
+   </center>
+   <top>
+      <Label text="Busca pessoas" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+   </top>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8ACFA5;" BorderPane.alignment="CENTER">
+         <children>
+            <SplitPane dividerPositions="0.32945736434108525, 0.6686046511627907" prefHeight="100.0" prefWidth="520.0" style="-fx-background-color: #8ACFA5;">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <MenuButton layoutX="44.0" layoutY="37.0" mnemonicParsing="false" text="Jogador">
+                          <items>
+                            <MenuItem fx:id="btnAdicionaJogador" mnemonicParsing="false" onAction="#handleAdicionaJogador" text="Cadastrar Jogador" />
+                            <MenuItem fx:id="btnAlterarJogador" mnemonicParsing="false" onAction="#handleAlteraJogador" text="Alterar Jogador" />
+                              <MenuItem fx:id="menuVerMissao" mnemonicParsing="false" onAction="#handleVerificarMissoes" text="Verificar Missões" />
+                          </items>
+                        </MenuButton>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="166.0">
+                     <children>
+                        <Button layoutX="34.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleEscolheMissao" text="Escolhe Missao" AnchorPane.bottomAnchor="49.0" />
+                        <Button layoutX="59.0" layoutY="62.0" mnemonicParsing="false" onAction="#handleJogar" text="Jogar" AnchorPane.topAnchor="62.0" />
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnExcluiJogador" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleExcluiJogador" text="Excluir Jogador" />
+                        <Button layoutX="41.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleListaMissões" text="Lista Missões" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+</BorderPane>
