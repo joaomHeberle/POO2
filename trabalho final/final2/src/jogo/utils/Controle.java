@@ -9,7 +9,7 @@ public class Controle {
 		public boolean colisao(GameObject obj, TileInfo tile){
 			if((tile.id!=0)&&obj.collided(tile)&& obj instanceof Zumbie) {
 				
-				System.out.println(obj.getClass());
+		
 				return true;
 			}else if((tile.id<57||tile.id==64)&&obj.collided(tile)&& !(obj instanceof Zumbie)) {
 				return true;

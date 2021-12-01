@@ -39,10 +39,12 @@ public class JogadorDAO implements DAO<Jogador> {
 			pstm.setInt(1, id);
 			var ex = pstm.execute();
 			pstm.close();
+			System.out.println(ex);
 			return ex;
-		} catch (SQLException ex) {
+		
+		} catch (SQLException e) {
 
-			throw new RuntimeException(ex);
+			throw new RuntimeException(e);
 		}
 
 	}

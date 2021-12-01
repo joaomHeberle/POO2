@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -40,6 +41,11 @@ public class ListaMissaoJogadorController<T> implements Initializable{
     private TableColumn<Missao, Integer> clmTipo;
     @FXML
     private TableView<T> tableMissaoJogador;
+    @FXML
+    private Label lbId;
+
+    @FXML
+    private Label lbNome;
     @FXML
     void handleAlterarMissao(ActionEvent event) {
 

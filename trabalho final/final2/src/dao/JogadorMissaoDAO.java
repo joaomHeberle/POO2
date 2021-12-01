@@ -47,21 +47,21 @@ public class JogadorMissaoDAO {
 	}
 
 
-	public boolean updateJogadorMissao(int idJogador, int idMissaoOld, int idMissaoNew) {
-		String sql = "UPDATE \"jogadorMissao\" SET id_missao=? WHERE id_missao=? AND id_jogador=?";
-		try (Connection con = ConnectionFactory.getConnection()) {
-			var pstm = con.prepareStatement(sql);
-			pstm.setLong(1, idMissaoNew);
-			pstm.setLong(2, idMissaoOld);
-			pstm.setLong(3, idJogador);
-			var ex =pstm.execute();
-			pstm.close();
-			return ex;
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-
-	}
+//	public boolean updateJogadorMissao(int idJogador, int idMissaoOld, int idMissaoNew) {
+//		String sql = "UPDATE \"jogadorMissao\" SET id_missao=? WHERE id_missao=? AND id_jogador=?";
+//		try (Connection con = ConnectionFactory.getConnection()) {
+//			var pstm = con.prepareStatement(sql);
+//			pstm.setLong(1, idMissaoNew);
+//			pstm.setLong(2, idMissaoOld);
+//			pstm.setLong(3, idJogador);
+//			var ex =pstm.execute();
+//			pstm.close();
+//			return ex;
+//		} catch (SQLException e) {
+//			throw new RuntimeException(e);
+//		}
+//
+//	}
 
 	public List<Missao> listDados(Jogador e) {
 		String query = "SELECT \"id_Missao\", tipo, status, descricao,quantidade from \"jogadorMissao\" left outer join jogador on \"id_Jogador\"=id_jogador left outer join missao on \"id_Missao\"= id_missao where id_jogador=?";
