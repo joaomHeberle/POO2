@@ -8,8 +8,13 @@ import javax.swing.JOptionPane;
 
 import application.Main;
 import application.models.Jogador;
+import application.models.Missao;
 import dao.JogadorDAO;
+import dao.JogadorMissaoDAO;
+import dao.MissaoDAO;
 import jogo.models.Player2;
+import jogo.utils.MissaoUtil;
+import jogo.utils.Som;
 import jplay.Keyboard;
 import jplay.Scene;
 
@@ -21,7 +26,7 @@ public class Cenario2 extends Cenario {
 	private Player2 player;
 	private Keyboard teclado;
 	public static int tam = 20;
-	private boolean testa=true;
+
 	private int id;
 	
 	public Cenario2(Window window,int id) {
@@ -32,25 +37,25 @@ public class Cenario2 extends Cenario {
 		teclado = janela.getKeyboard();
 		this.id=id;
 
-		//Som.play("src/recursos/audio/Path.mid");
+		Som.play("src/recursos/audio/mapa1.mid");
 		run();
 	}
 
 	private void run() {
 
 		while (true) {
-			// cena.draw();
+
 			player.controle(janela, teclado);
 			player.caminho(cena);
 
 			cena.moveScene(player);
-//		player.x += cena.getXOffset();
-//			player.y += cena.getYOffset();
+
 	
 			player.draw();
 			janela.update();
 			mudarCenario();
 			pegarMissao();
+			
 		}
 
 	}
@@ -66,22 +71,30 @@ public class Cenario2 extends Cenario {
 			
 			try {
 			JogadorDAO jdao = new JogadorDAO();
-			 List<Jogador> pers = new ArrayList<>();
+			Jogador j = new Jogador();
+			JogadorMissaoDAO jmDAO = new JogadorMissaoDAO();
+			MissaoDAO mDAO = new MissaoDAO();
+			j = jdao.get(this.id);
+			j.setMissoes(jmDAO.listDados(j));
+			
+			 List<Missao> pers = new ArrayList<>();
 		    JDialog.setDefaultLookAndFeelDecorated(true);
-		    pers=jdao.list(16, 0);
+		    
+		    pers=jmDAO.listMissaoNaoSelecionada(j);
 		    Object[] selectionValues = pers.toArray();
 		   
 		    Object selection = JOptionPane.showInputDialog(null, "Escolha uma missão",
 		        "Lista de missões", JOptionPane.QUESTION_MESSAGE, null, selectionValues,null);
 		
-			System.out.println(selection);
+	
 			var a=selection.toString();
-			System.out.println(a);
+
 			String[] corte=a.split(" ");
-			System.out.println(corte[1]);
-			int aux_Id= Integer.parseInt(corte[1]);
-			
-			System.out.println(aux_Id);
+
+			int aux_Id= Integer.parseInt(corte[2]);
+			j.setMissoes(mDAO.listById(aux_Id));
+			jmDAO.insert(j);
+
 			}catch (NullPointerException e) {
 				System.out.println("deve escolher uma missão");
 			}

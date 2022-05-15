@@ -1,0 +1,1 @@
+Deve ser instalado a biblioteca do jplay no path do eclipse. igual a do javafx

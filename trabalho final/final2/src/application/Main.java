@@ -1,7 +1,11 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import application.models.Missao;
+import application.utils.Validacao;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -11,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
 
+	
 	private static Stage stage2;
 
 	@Override
@@ -18,19 +23,21 @@ public class Main extends Application {
 
 		stage2 = primaryStage;
 
-		loadScene("Inicio");
+		loadScene("LoginADM");
 		primaryStage.show();
 	}
 
 	public static void loadScene(String view, Object dados) {
 		view = "/application/views/" + view + ".fxml";
 		BorderPane root;
+		
 		try {
 			root = (BorderPane) FXMLLoader.load(Main.class.getResource(view));
 			Scene scene = new Scene(root);
 			root.setUserData(dados);
+			//System.out.println(dados);
 			stage2.setScene(scene);
-	
+			
 		
 		} catch (IOException e) {
 
@@ -48,6 +55,7 @@ public class Main extends Application {
 	
 	
 	public static void main(String[] args) {
+
 		launch(args);
 	}
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="final/src"/>
+	<classpathentry kind="src" path="final2/src"/>
+	<classpathentry kind="src" path="finalfx/src"/>
+	<classpathentry kind="src" path="parte1 version1.1/comeco/parte1/lib/Jplay/src"/>
+	<classpathentry kind="src" path="parte1 version1.1/comeco/parte1/src"/>
+	<classpathentry kind="src" path="parte1/comeco/parte1/src"/>
+	<classpathentry kind="src" path="parte2/finalfx - Copia/src"/>
+	<classpathentry kind="lib" path="final/lib/javafx-sdk-17.0.0.1/lib/javafx-swt.jar"/>
+	<classpathentry kind="lib" path="final/lib/javafx-sdk-17.0.0.1/lib/javafx.base.jar"/>
+	<classpathentry kind="lib" path="final/lib/javafx-sdk-17.0.0.1/lib/javafx.controls.jar"/>
+	<classpathentry kind="lib" path="final/lib/javafx-sdk-17.0.0.1/lib/javafx.fxml.jar"/>
+	<classpathentry kind="lib" path="final/lib/javafx-sdk-17.0.0.1/lib/javafx.graphics.jar"/>
+	<classpathentry kind="lib" path="final/lib/javafx-sdk-17.0.0.1/lib/javafx.media.jar"/>
+	<classpathentry kind="lib" path="final/lib/javafx-sdk-17.0.0.1/lib/javafx.swing.jar"/>
+	<classpathentry kind="lib" path="final/lib/javafx-sdk-17.0.0.1/lib/javafx.web.jar"/>
+	<classpathentry kind="lib" path="final/lib/Jplay/dist/Jplay.jar"/>
+	<classpathentry kind="lib" path="final/lib/postgresql-42.3.1.jar"/>
+	<classpathentry kind="lib" path="final2/bin/lib/Jplay/dist/Jplay.jar"/>
+	<classpathentry kind="lib" path="final2/lib/javafx-sdk-17.0.0.1/lib/javafx-swt.jar"/>
+	<classpathentry kind="lib" path="final2/lib/javafx-sdk-17.0.0.1/lib/javafx.base.jar"/>
+	<classpathentry kind="lib" path="final2/lib/javafx-sdk-17.0.0.1/lib/javafx.controls.jar"/>
+	<classpathentry kind="lib" path="final2/lib/javafx-sdk-17.0.0.1/lib/javafx.fxml.jar"/>
+	<classpathentry kind="lib" path="final2/lib/javafx-sdk-17.0.0.1/lib/javafx.graphics.jar"/>
+	<classpathentry kind="lib" path="final2/lib/javafx-sdk-17.0.0.1/lib/javafx.media.jar"/>
+	<classpathentry kind="lib" path="final2/lib/javafx-sdk-17.0.0.1/lib/javafx.swing.jar"/>
+	<classpathentry kind="lib" path="final2/lib/javafx-sdk-17.0.0.1/lib/javafx.web.jar"/>
+	<classpathentry kind="lib" path="final2/lib/Jplay/dist/Jplay.jar"/>
+	<classpathentry kind="lib" path="final2/lib/postgresql-42.3.1.jar"/>
+	<classpathentry kind="lib" path="finalfx/lib/javafx-sdk-17.0.0.1/lib/javafx-swt.jar"/>
+	<classpathentry kind="lib" path="finalfx/lib/javafx-sdk-17.0.0.1/lib/javafx.base.jar"/>
+	<classpathentry kind="lib" path="finalfx/lib/javafx-sdk-17.0.0.1/lib/javafx.controls.jar"/>
+	<classpathentry kind="lib" path="finalfx/lib/javafx-sdk-17.0.0.1/lib/javafx.fxml.jar"/>
+	<classpathentry kind="lib" path="finalfx/lib/javafx-sdk-17.0.0.1/lib/javafx.graphics.jar"/>
+	<classpathentry kind="lib" path="finalfx/lib/javafx-sdk-17.0.0.1/lib/javafx.media.jar"/>
+	<classpathentry kind="lib" path="finalfx/lib/javafx-sdk-17.0.0.1/lib/javafx.swing.jar"/>
+	<classpathentry kind="lib" path="finalfx/lib/javafx-sdk-17.0.0.1/lib/javafx.web.jar"/>
+	<classpathentry kind="lib" path="finalfx/lib/postgresql-42.3.1.jar"/>
+	<classpathentry kind="lib" path="parte1 version1.1/comeco/parte1/lib/javafx-sdk-17.0.1/lib/javafx-swt.jar"/>
+	<classpathentry kind="lib" path="parte1 version1.1/comeco/parte1/lib/javafx-sdk-17.0.1/lib/javafx.base.jar"/>
+	<classpathentry kind="lib" path="parte1 version1.1/comeco/parte1/lib/javafx-sdk-17.0.1/lib/javafx.controls.jar"/>
+	<classpathentry kind="lib" path="parte1 version1.1/comeco/parte1/lib/javafx-sdk-17.0.1/lib/javafx.fxml.jar"/>
+	<classpathentry kind="lib" path="parte1 version1.1/comeco/parte1/lib/javafx-sdk-17.0.1/lib/javafx.graphics.jar"/>
+	<classpathentry kind="lib" path="parte1 version1.1/comeco/parte1/lib/javafx-sdk-17.0.1/lib/javafx.media.jar"/>
+	<classpathentry kind="lib" path="parte1 version1.1/comeco/parte1/lib/javafx-sdk-17.0.1/lib/javafx.swing.jar"/>
+	<classpathentry kind="lib" path="parte1 version1.1/comeco/parte1/lib/javafx-sdk-17.0.1/lib/javafx.web.jar"/>
+	<classpathentry kind="lib" path="parte1 version1.1/comeco/parte1/lib/Jplay/dist/Jplay.jar"/>
+	<classpathentry kind="lib" path="parte2/finalfx - Copia/lib/javafx-sdk-17.0.0.1/lib/javafx-swt.jar"/>
+	<classpathentry kind="lib" path="parte2/finalfx - Copia/lib/javafx-sdk-17.0.0.1/lib/javafx.base.jar"/>
+	<classpathentry kind="lib" path="parte2/finalfx - Copia/lib/javafx-sdk-17.0.0.1/lib/javafx.controls.jar"/>
+	<classpathentry kind="lib" path="parte2/finalfx - Copia/lib/javafx-sdk-17.0.0.1/lib/javafx.fxml.jar"/>
+	<classpathentry kind="lib" path="parte2/finalfx - Copia/lib/javafx-sdk-17.0.0.1/lib/javafx.graphics.jar"/>
+	<classpathentry kind="lib" path="parte2/finalfx - Copia/lib/javafx-sdk-17.0.0.1/lib/javafx.media.jar"/>
+	<classpathentry kind="lib" path="parte2/finalfx - Copia/lib/javafx-sdk-17.0.0.1/lib/javafx.swing.jar"/>
+	<classpathentry kind="lib" path="parte2/finalfx - Copia/lib/javafx-sdk-17.0.0.1/lib/javafx.web.jar"/>
+	<classpathentry kind="lib" path="parte2/finalfx - Copia/lib/postgresql-42.3.1.jar"/>
+	<classpathentry kind="output" path="final/bin"/>
+</classpath>

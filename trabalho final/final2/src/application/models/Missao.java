@@ -65,7 +65,7 @@ public class Missao {
 	@Override
 	public String toString() {
 		String v ="ID Missao: "+idMissao+" Descricao: " + this.descricao + " Status: " + (this.status ? "Completou" : "Não completou") + " Tipo: "
-				+ this.tipo+"\n";
+				+ this.tipo+" Quantidade: "+this.quantidade+" \n";
 
 		return v;
 

@@ -34,7 +34,7 @@ public class Cenario1 extends Cenario{
 		
 			for (int i = 0; i < zum.length; i++) {
 				if(i>=0&&i<10) {
-					zum[i] = new Zumbie((0 + i) *60,0);  //fila de cima
+					zum[i] = new Zumbie((0 + i) *60,0,id);  //fila de cima
 				}else if(i>=10&&i<15){
 					zum[i] = new Zumbie((0 + i) *20,50); //fila do meio
 				}else {
@@ -44,7 +44,7 @@ public class Cenario1 extends Cenario{
 			}
 
 			while (true) {
-				// cena.draw();
+			
 				player.controle(janela, teclado);
 				player.caminho(cena);
 
@@ -60,12 +60,12 @@ public class Cenario1 extends Cenario{
 					if(zum[i].tocou) {
 						System.exit(0);
 					}
-					//zum[i].perseguir(player.x, player.y);
+					
 					zum[i].mover(janela);
 					zum[i].draw();
 					player.atirar(janela, cena, teclado, zum[i]);
 					
-					zum[i].morrer(player);
+					zum[i].morrer(player,tam);
 					
 					zum[i].atacar(player);
 
@@ -85,7 +85,7 @@ public class Cenario1 extends Cenario{
 				zum[19].perseguir(player.x, player.y);
 				player.atirar(janela, cena, teclado, zum[19]);
 				zum[19].draw();
-				zum[19].morrer(player);
+				zum[19].morrer(player,tam);
 				zum[19].atacar(player);
 			
 				

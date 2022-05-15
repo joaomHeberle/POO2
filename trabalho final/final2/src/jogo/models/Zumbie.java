@@ -1,22 +1,34 @@
 package jogo.models;
 
+import jogo.utils.MissaoUtil;
 import jogo.views.Cenario1;
 import jplay.Window;
 
 public class Zumbie extends Ator {
-
+	MissaoUtil mu = new MissaoUtil();
 	private double ataque=1;
 	private boolean dir=true;
 	private boolean desc=false;
 	private int cont=0;
-	private int a=0;
-
+	private static int a=0;
+	private int id=0;
+	private static int quantidade;
 	public Zumbie(int x, int y) {
 		super("src/recursos/sprite/enemy1.png", 1);
 		this.x = x;
 		this.y = y;
 		this.setTotalDuration(2000);
 		this.velocidade = 0.1;
+	}
+	public Zumbie(int x, int y, int id) {
+		super("src/recursos/sprite/enemy1.png", 1);
+		this.x = x;
+		this.y = y;
+		this.setTotalDuration(2000);
+		this.velocidade = 0.1;
+		this.id = id;
+		quantidade = mu.retornaQuantidade(id);
+		
 	}
 	public void mover(Window janela){
 				
@@ -98,19 +110,31 @@ public class Zumbie extends Ator {
 		}
 	}
 
-	public void morrer(Player player) {
+	public void morrer(Player player,int i) {
+		
 		if(this.energia<=0 ) {
+			
 		var ver =true;
 			if(ver) {
-			this.a+=1;
-			
+		
+			Zumbie.a+=1;
 			this.velocidade=0;
 			this.ataque=0;
 			this.direcao=0;
 			this.movendo=false;
 			this.x = 1_000_000;
 			this.energia=1;
-			player.ganhaXp();
+			player.ganhaXp(110);
+			if(a==quantidade&&quantidade!=0) {
+		
+				player.ganhaXp(1000);
+				var x = mu.retornaId(player.getId());
+				mu.completouMissao(player.getId(),x);
+			}
+			if(a==i) {
+				player.atualizaCampos(player);
+				System.exit(0);
+			}
 			
 			
 			}
@@ -126,6 +150,7 @@ public class Zumbie extends Ator {
 			player.setEnergia(energy);
 		}
 		if(energy<=0) {
+			player.atualizaCampos(player);
 			System.exit(0);
 		}
 		
